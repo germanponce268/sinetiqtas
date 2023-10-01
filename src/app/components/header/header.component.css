@@ -1,0 +1,14 @@
+.header{
+    height: auto;
+}
+
+.header-container{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:rgb(33, 37, 41) ;
+}
+
+.header .navbar .navbar-brand img{
+    width: 150px;
+}

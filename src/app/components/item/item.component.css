@@ -1,0 +1,30 @@
+.body{
+    height: 100%;
+    background-color: rgb(248, 248, 250);
+    min-width: 250px;
+} 
+
+.body .container{
+    display: flex;
+}
+
+.body .container .image img{
+    width:75%;
+}
+
+.body .container .info{
+    padding: 25px;
+}
+
+@media screen and (max-width:560px){
+    .body .container .image img {
+        width: 300px;
+        }    
+}
+
+
+@media screen and (max-width:560px){
+    .body .container{
+        display: block;
+    }    
+}

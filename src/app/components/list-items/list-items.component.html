@@ -1,0 +1,17 @@
+<div class="body">
+    <div class="body-container">
+        <div *ngFor="let item of productoMeli" class="image-box">
+            <img [src]="item.body.pictures[0].url" alt="">
+            <div class="in-flex-box">
+                <h3>{{item.body.title}}</h3>
+                <p>${{item.body.price}}</p>               
+            </div>
+            <div class="buttons">
+                <p-button styleClass="p-button-help"><a [href]="item.body.permalink">Comprar</a></p-button>    
+                <p-button (click)="showDescription(item)" icon="pi pi-image" label="Ver"></p-button>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
