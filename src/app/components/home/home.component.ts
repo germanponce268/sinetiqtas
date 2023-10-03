@@ -12,11 +12,13 @@ import { MeliService } from 'src/app/services/meli.service';
 export class HomeComponent {
     public flayer! : string;
     public flayer2! :string;
-    public flayer3! : string;
+    public lunchera1! : string;
+    public lunchera2! : string;
 
     ngOnInit(){
       this.flayer = '/assets/images/flayer/flayer.png';
       this.flayer2 = '/assets/images/flayer/flayer2.png';
-      this.flayer3 = '/assets/images/flayer/flayer3.png';
+      this.lunchera1 = '/assets/images/flayer/lunchera1.png';
+      this.lunchera2 = '/assets/images/flayer/lunchera2.jpeg'
     }
 }

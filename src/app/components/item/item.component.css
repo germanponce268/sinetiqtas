@@ -13,7 +13,8 @@
 }
 
 .body .container .info{
-    padding: 25px;
+    padding-top: 25px;
+    padding-left: 100px;
 }
 
 @media screen and (max-width:560px){
@@ -27,4 +28,10 @@
     .body .container{
         display: block;
     }    
+}
+
+@media screen and (max-width:560px){
+    .body .container .info{
+        padding-left: 25px;
+    }
 }
