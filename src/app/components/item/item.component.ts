@@ -38,5 +38,6 @@ export class ItemComponent {
           numVisible: 1
       }
   ];
+  
   }
 }

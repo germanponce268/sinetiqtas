@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { GalleriaResponsiveOptions } from 'primeng/galleria';
 import { Picture, ProductMeli } from 'src/app/model/producto-meli';
 import { ItemService } from 'src/app/services/item.service';
@@ -15,7 +16,7 @@ export class SearchedItemComponent {
   public item! : ProductMeli|undefined;
   public responsiveOptions!: GalleriaResponsiveOptions[];
 
-  constructor(private itemService: ItemService){}
+  constructor(private itemService: ItemService, private route: ActivatedRoute){}
 
 
   ngOnInit(){
@@ -37,5 +38,10 @@ export class SearchedItemComponent {
           numVisible: 1
       }
   ];
+  this.route.url.subscribe((url)=>{
+    console.log(url);
+    const currentUrl = url.join('/');
+    console.log('url', currentUrl);  
+  })
   }
 }

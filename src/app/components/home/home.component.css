@@ -11,6 +11,58 @@
     padding: 5px;
 }
 
+.container .cards{
+    display: flex;
+    justify-content: center;
+}
+
+.container .title{
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.container .images{
+    display: flex;
+    align-items: center;
+    margin-top: 2%;
+}
 
 
+.container .images img{
+   width: 700px;
+}
+
+.container .about{
+    display: block;
+    margin-top: 2%;
+    width: 100%;
+}
+
+.container .about p{
+    text-align: center;
+ }
+
+.container .about .title2{
+    display: block;
+
+ }
+
+ .container .about .title2 h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+
+ @media screen and (max-width:560px){
+    .container .images img{
+        width: 50%;
+     }
+ }
+
+ @media screen and (max-width:560px){
+    .container .about .about-image{
+        width: 100%;
+     }
+ }
 
