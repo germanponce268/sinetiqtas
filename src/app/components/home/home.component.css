@@ -30,13 +30,22 @@
 
 
 .container .images img{
-   width: 700px;
+   width: 50%;
 }
 
 .container .about{
     display: block;
     margin-top: 2%;
     width: 100%;
+}
+
+.container .about .about-image{
+    display: flex;
+    justify-content: center;
+}
+
+.container .about .about-image img{
+    width: 50%;
 }
 
 .container .about p{
@@ -61,7 +70,7 @@
  }
 
  @media screen and (max-width:560px){
-    .container .about .about-image{
+    .container .about .about-image img{
         width: 100%;
      }
  }
