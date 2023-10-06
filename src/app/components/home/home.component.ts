@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { GalleriaResponsiveOptions } from 'primeng/galleria';
-import { ProductMeli} from 'src/app/model/producto-meli';
-import { MeliService } from 'src/app/services/meli.service';
+
 
 @Component({
   selector: 'app-home',
@@ -20,6 +18,8 @@ export class HomeComponent {
     public telas1! : string;
     public about! : string;
 
+  constructor(private router : Router){}
+
     ngOnInit(){
       this.flayer = '/assets/images/flayer/flayer.png';
       this.flayer2 = '/assets/images/flayer/flayer2.png';
@@ -31,5 +31,10 @@ export class HomeComponent {
       this.telas1 = '/assets/images/telas1.jpg';
       this.about = '/assets/images/about.jpg';
      
+    }
+
+    navigate(event :  any){
+      console.log('el evento ', event)
+      this.router.navigateByUrl('item');
     }
 }
