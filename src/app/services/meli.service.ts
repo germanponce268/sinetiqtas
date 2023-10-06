@@ -8,7 +8,7 @@ import { ProductMeli } from '../model/producto-meli';
 })
 export class MeliService {
 
-  private apiUrl : string = 'https://api.mercadolibre.com/items?ids=MLA1511571490,MLA1389288575,MLA1524467234';
+  private apiUrl : string = 'https://api.mercadolibre.com/items?ids=MLA1511571490,MLA1389288575,MLA1524467234,MLA1391596807';
   private apiUrl2 : string = `https://api.mercadolibre.com/items?ids=`;
 
   constructor(private http : HttpClient) { }
