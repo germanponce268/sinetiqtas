@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
+    public icon! : string;
 
+    ngOnInit(){
+      this.icon = '/assets/images/instagram-icon.png'
+    }
 }
