@@ -26,7 +26,7 @@ export class HeaderComponent {
   }
 
   onSearch(term: any){
-    this.meliService.getProduct().subscribe((resp:ProductMeli[]) =>{
+    this.meliService.getProducts().subscribe((resp:ProductMeli[]) =>{
     let found = resp.find((item) => {
       return item.body.title.toLowerCase().includes(term.searchTerm);
     })

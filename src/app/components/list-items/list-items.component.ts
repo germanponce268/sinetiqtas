@@ -23,7 +23,7 @@ export class ListItemsComponent {
     constructor(private meliService: MeliService, private router : Router,private itemService: ItemService) { }
   ngOnInit(): void {   
     
-    this.meliService.getProduct().subscribe(resp =>{
+    this.meliService.getProducts().subscribe(resp =>{
     this.productoMeli = resp;
     console.log(this.productoMeli);
     this.imgMeli = resp[0].body.pictures[0].url;

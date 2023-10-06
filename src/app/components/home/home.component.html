@@ -27,15 +27,15 @@
         </div>
       </div>
     </div>
-    <div class="cards" >
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" [src]="matero" alt="Card image cap">
+    <div class="cards"  >
+      <div class="card"(click)="navigate(item)" style="width: 18rem;">
+        <img class="card-img-top" [attr.item] [src]="matero" alt="Card image cap">
         <div class="card-body">
           <p class="card-text">Ideal para salidas al aire libre, este bolso matero que se convierte en un mantel al desplegar sus cierres!</p>
         </div>
       </div>
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" [src]="lunchera" alt="Card image cap">
+      <div class="card" (click)="navigate(item2)" style="width: 18rem;">
+        <img class="card-img-top" [attr.item2] [src]="lunchera" alt="Card image cap">
         <div class="card-body">
           <p class="card-text">Perfecto para llevar tus refrigerios a la oficina, la escuela o un dia de camping</p>
         </div>
