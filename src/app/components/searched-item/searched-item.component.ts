@@ -38,10 +38,6 @@ export class SearchedItemComponent {
           numVisible: 1
       }
   ];
-  this.route.url.subscribe((url)=>{
-    console.log(url);
-    const currentUrl = url.join('/');
-    console.log('url', currentUrl);  
-  })
+    console.log(this.item);
   }
 }

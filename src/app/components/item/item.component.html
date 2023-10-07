@@ -4,7 +4,7 @@
             <p-galleria 
                             [value]='images' 
                             [responsiveOptions]="responsiveOptions" 
-                            [containerStyle]="{ 'max-width': '640px' }" 
+                            [containerStyle]="{ 'max-width': '700px' }" 
                             [numVisible]="5">
                     <ng-template pTemplate="item" let-item>
                         <img [src]="item.url" />
@@ -16,12 +16,30 @@
                     </ng-template>
             </p-galleria>
         </div>
-        <div class="info">
-            <div class="title">
-                <h3>{{title}}</h3>
-                    <p *ngFor="let attribute of item.body.attributes" >
-                        {{attribute.name}} : {{attribute.value_name}}
-                    </p>
+        <div class="plan">
+            <div class="inner">
+                <span class="pricing">
+                    <span>
+                       AR$ {{item.body.price}} <small></small>
+                    </span>
+                </span>
+                <p class="title">{{title}}</p>
+                <ul class="features">
+                    <li *ngFor="let attribute of item.body.attributes">
+                        <span class="icon">
+                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                            </svg>
+                        </span>
+                        <span>{{attribute.name}} : {{attribute.value_name}}</span>
+                    </li>
+                </ul>
+                <div class="action">
+                <a class="button" [href]="item.body.permalink">
+                    Comprar
+                </a>
+                </div>
             </div>
         </div>
     </div>
