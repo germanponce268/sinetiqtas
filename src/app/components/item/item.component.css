@@ -5,10 +5,15 @@
 } 
 
 .body .container{
-    display: flex;
+    display: block;
     
     align-items: center;
     justify-content: space-between;
+}
+
+.body .container .sub-container{
+  display: flex;
+  justify-content: space-between;
 }
 
 .body .container .image img{
@@ -23,13 +28,13 @@
 
 
 @media screen and (max-width:560px){
-    .body .container{
+    .body .container .sub-container{
         display: block;
     }    
 }
 
 @media screen and (max-width:560px){
-    .body .container .info{
+    .body .container .sub-container .info{
         padding-left: 25px;
     }
 }
@@ -152,3 +157,41 @@
   .plan .button:hover, .plan .button:focus {
     background-color: #4133B7;
   }
+
+.body .container .button{
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+  button {
+    display: flex;
+    height: 3em;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    background-color: #eeeeee4b;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    border: none;
+    background: #fff;
+   }
+   
+   button > svg {
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 20px;
+    transition: all 0.4s ease-in;
+   }
+   
+   button:hover > svg {
+    font-size: 1.2em;
+    transform: translateX(-5px);
+   }
+   
+   button:hover {
+    box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+    transform: translateY(-2px);
+   }

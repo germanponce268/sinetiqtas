@@ -45,4 +45,7 @@ export class ListItemsComponent {
     console.log(this.urlMeli);
     this.router.navigateByUrl(this.urlMeli);    
   }
+  navigate(){
+    this.router.navigateByUrl('home')
+  }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { GalleriaResponsiveOptions } from 'primeng/galleria';
 import { Picture, ProductMeli } from 'src/app/model/producto-meli';
 import { ItemService } from 'src/app/services/item.service';
@@ -16,7 +17,7 @@ export class ItemComponent {
   public item! : ProductMeli;
   public responsiveOptions!: GalleriaResponsiveOptions[];
 
-  constructor(private itemService: ItemService){}
+  constructor(private itemService: ItemService, private router : Router){}
 
 
   ngOnInit(){
@@ -39,5 +40,8 @@ export class ItemComponent {
       }
   ];
   
+  }
+  navigate(){
+    this.router.navigateByUrl('list-items')
   }
 }
