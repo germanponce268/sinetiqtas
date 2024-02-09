@@ -27,12 +27,12 @@ export class HomeComponent {
   constructor(private router : Router, private meliService : MeliService,private itemService : ItemService){}
 
     ngOnInit(){
-      this.flayer = '/assets/images/flayer/flayer.jpeg';
+      this.flayer = '/assets/images/matero-mantel-bordo.jpeg';
       this.flayer2 = '/assets/images/flayer/flayer2.png';
       this.flayer3 = '/assets/images/flayer/flayer3.jpeg';
       this.flayer4 = '/assets/images/flayer/flayer4.png';
       this.lunchera = '/assets/images/lunchera.jpeg';
-      this.lunchera1 = '/assets/images/flayer/lunchera1.png';
+      this.lunchera1 = '/assets/images/estuche-verano.jpeg';
       this.lunchera2 = '/assets/images/flayer/lunchera2.jpeg'
       this.matero = '/assets/images/matero&mantel.png';
       this.telas = '/assets/images/telas.jpg';
