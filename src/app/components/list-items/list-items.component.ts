@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { GalleriaResponsiveOptions } from 'primeng/galleria';
 import { Picture, ProductMeli} from 'src/app/model/producto-meli';
+import { CartService } from 'src/app/services/cart.service';
 import { ItemService } from 'src/app/services/item.service';
 import { MeliService } from 'src/app/services/meli.service';
 
@@ -20,7 +21,7 @@ export class ListItemsComponent {
   public responsiveOptions! : GalleriaResponsiveOptions[];
   public visible : boolean = false;
   public position : "center" | "top" | "bottom" | "left" | "right" | "topleft" | "topright" | "bottomleft" | "bottomright" = `left`;
-    constructor(private meliService: MeliService, private router : Router,private itemService: ItemService) { }
+    constructor(private meliService: MeliService, private router : Router,private itemService: ItemService, private cartService : CartService) { }
   ngOnInit(): void {   
     
     this.meliService.getProducts().subscribe(resp =>{
@@ -47,5 +48,10 @@ export class ListItemsComponent {
   }
   navigate(){
     this.router.navigateByUrl('home')
+  }
+
+  addToCart(item : ProductMeli){
+    this.cartService.addToCart(item);
+    console.log(this.cartService.getCartList())
   }
 }

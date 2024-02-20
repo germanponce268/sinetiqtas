@@ -16,10 +16,50 @@
               <a class="nav-link" [routerLink]="['/list-items']">Productos</a>
             </li>
           </ul>
+          <div class="cart">
+             <i (click)="op.toggle($event)" class="pi pi-cart-plus" style="font-size: 2rem"></i>
+          </div>
           <form [formGroup]="search" (ngSubmit)="onSearch(search.value)" class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" formControlName="searchTerm" placeholder="Buscar..." aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
           </form>
         </div>
       </nav>
+      <p-overlayPanel #op>
+        <p-table [value]="products" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>
+                Nombre
+              </th>
+              <th>Imagen</th>
+              <th>
+                Precio
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-product>
+              <tr>
+                <td>
+                  {{product.body.title}}
+                </td>
+                <td>
+                  <img [src]="product.body.pictures[0].url" alt="" class="w-5rem shadow-2">
+                </td>
+                <td>
+                  $ {{product.body.price}}
+                </td>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="footer" let-product>
+              <tr>
+                <th>
+                  Total
+                </th>
+                <td></td>
+                <td>$ {{total()}}</td>
+              </tr>
+          </ng-template>
+        </p-table>
+      </p-overlayPanel>
 </div>

@@ -12,3 +12,10 @@
 .header .navbar .navbar-brand img{
     width: 150px;
 }
+.cart{
+    padding-right: 1%;
+}
+
+th{
+    padding-left: 3%;
+}

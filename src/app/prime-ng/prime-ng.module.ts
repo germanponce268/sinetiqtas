@@ -5,6 +5,10 @@ import { GalleriaModule } from 'primeng/galleria';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
+import { TableModule } from 'primeng/table';
+import { PaginatorModule } from 'primeng/paginator';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -13,14 +17,20 @@ import { DialogModule } from 'primeng/dialog';
     GalleriaModule,
     OverlayPanelModule,
     BrowserAnimationsModule,
-    DialogModule
+    DialogModule,
+    ToastModule,
+    TableModule,
+    PaginatorModule
   ],
   exports:[
     ButtonModule,
     GalleriaModule,
     OverlayPanelModule,
     BrowserAnimationsModule,
-    DialogModule
+    DialogModule,
+    ToastModule,
+    TableModule,
+    PaginatorModule
   ]
 })
 export class PrimeNgModule { }
