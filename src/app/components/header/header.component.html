@@ -49,6 +49,9 @@
                 <td>
                   $ {{product.body.price}}
                 </td>
+                <td>
+                  <i (click)="removeFromCart(product.body.id)" class="pi pi-times"></i>
+                </td>
               </tr>
           </ng-template>
           <ng-template pTemplate="footer" let-product>

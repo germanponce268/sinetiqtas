@@ -13,11 +13,17 @@ export class CartService {
 
   constructor(private meliService:MeliService) { }
 
-  addToCart(product : ProductMeli){
+  create(product : ProductMeli){
     this.cartList.push(product);
+  }
+
+  delete(itemId:string):ProductMeli[]{
+    return this.cartList = this.cartList.filter(item=>item.body.id !== itemId);
   }
 
   getCartList(): ProductMeli[]{
     return this.cartList;
   }
+
+
 }

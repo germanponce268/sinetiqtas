@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SearchedItemComponent } from './searched-item/searched-item.component';
 
+
 @NgModule({
     declarations:[
         HomeComponent,

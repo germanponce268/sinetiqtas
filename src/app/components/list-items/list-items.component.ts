@@ -51,7 +51,7 @@ export class ListItemsComponent {
   }
 
   addToCart(item : ProductMeli){
-    this.cartService.addToCart(item);
+    this.cartService.create(item);
     console.log(this.cartService.getCartList())
   }
 }

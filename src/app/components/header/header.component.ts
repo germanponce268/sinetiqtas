@@ -48,6 +48,12 @@ export class HeaderComponent {
     console.log("el carro qlia")
   }
 
+  removeFromCart(itemId : string){
+    this.products = this.cartService.delete(itemId);
+    console.log(itemId);
+    console.log(this.cartService.getCartList());
+  }
+
   total(): number{
     let result=0;
     this.cartService.getCartList().forEach(item=>{
