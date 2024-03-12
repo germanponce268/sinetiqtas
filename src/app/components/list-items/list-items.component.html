@@ -5,7 +5,7 @@
             <span>Volver</span>
           </button>
     </div>
-    <div class="body-container">
+    <div *ngIf= "statusConn; else badConn" class="body-container">
         <div *ngFor="let item of productoMeli" class="image-box">
             <img [src]="item.body.pictures[0].url" alt="">
             <div class="in-flex-box">
@@ -23,5 +23,10 @@
         </div>
         
     </div>
-    
+        <ng-template #badConn>
+            <div class="errorResponse">
+                
+                <h3><i class="pi pi-exclamation-circle" style="font-size: 2.5rem"></i> <br>Uh mal ahí! <br> Te tiró un error {{statusCode}}.<br> Eso quiere decir que la api de Mercado Libre anda mal por un "{{errorName}}"</h3>
+                </div>
+            </ng-template>
 </div>

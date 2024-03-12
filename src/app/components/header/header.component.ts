@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OverlayPanel } from 'primeng/overlaypanel';
 import { ProductMeli } from 'src/app/model/producto-meli';
 import { CartService } from 'src/app/services/cart.service';
 import { ItemService } from 'src/app/services/item.service';
@@ -12,14 +14,17 @@ import { MeliService } from 'src/app/services/meli.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  @ViewChild('op') overlayPanel!: OverlayPanel;
   public logo! : string;
   public search! : FormGroup;
   public products : ProductMeli[] = [];
   public selectedProduct! : ProductMeli;
+  private itemArray : [] = [];
+  public itemOrder: Map<string, number> =  new Map<string,number>();
   
-  constructor(private meliService: MeliService, private itemService: ItemService, private router: Router, private route: ActivatedRoute, private cartService : CartService){}
+  constructor(private meliService: MeliService, private itemService: ItemService, private router: Router, private route: ActivatedRoute, private cartService : CartService, private http : HttpClient){}
 
-  ngOnInit(){
+  ngOnInit(){ 
     this.logo = '/assets/images/logo-light.png'; 
     this.search = new FormGroup({
       searchTerm : new FormControl<string>('')
@@ -52,6 +57,34 @@ export class HeaderComponent {
     this.products = this.cartService.delete(itemId);
     console.log(itemId);
     console.log(this.cartService.getCartList());
+  }
+
+  sendCart(){
+    const data: { title: string; price: number; }[] = [];
+    console.log("Enviando..");
+    this.cartService.getCartList().map(item =>{
+      this.itemOrder.set(item.body.title, item.body.price)
+      
+    });
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    this.cartService.getCartList().forEach(item => {
+    let {title, price} = item.body;
+      data.push({title, price});
+    })
+    console.log(data);
+    this.http.post("http://localhost:8080/mail/send",data,httpOptions)
+              .subscribe(resp =>{
+                console.log(resp);
+              }, (error)=>console.log(error));
+  }
+
+  orderSubmit(){
+    this.router.navigateByUrl('order-submit');
+    this.overlayPanel.hide();
   }
 
   total(): number{

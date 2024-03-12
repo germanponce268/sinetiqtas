@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { GalleriaResponsiveOptions } from 'primeng/galleria';
 import { Picture, ProductMeli} from 'src/app/model/producto-meli';
@@ -12,6 +13,7 @@ import { MeliService } from 'src/app/services/meli.service';
   styleUrls: ['./list-items.component.css']
 })
 export class ListItemsComponent {
+  @ViewChild('badConn') template! : ElementRef;
   public imgMeli! : string;
   public title! : string; 
   public price! : string;
@@ -20,12 +22,15 @@ export class ListItemsComponent {
   public images : string[] = [];
   public responsiveOptions! : GalleriaResponsiveOptions[];
   public visible : boolean = false;
+  public statusConn! : boolean;
+  public statusCode!: number;
+  public errorName! : string;
   public position : "center" | "top" | "bottom" | "left" | "right" | "topleft" | "topright" | "bottomleft" | "bottomright" = `left`;
     constructor(private meliService: MeliService, private router : Router,private itemService: ItemService, private cartService : CartService) { }
   ngOnInit(): void {   
-    
-    this.meliService.getProducts().subscribe(resp =>{
-    this.productoMeli = resp;
+
+    this.meliService.getProducts().subscribe({next: (resp)=>{
+      this.productoMeli = resp;
     console.log(this.productoMeli);
     this.imgMeli = resp[0].body.pictures[0].url;
     this.title = resp[0].body.title;
@@ -33,7 +38,18 @@ export class ListItemsComponent {
     this.urlMeli = resp[0].body.permalink;
     console.log('las images', this.images);
     console.log(resp[1].body)
-    } )
+    },
+    error:(error)=>{
+      console.log(error);
+      this.statusConn = error.ok;
+      this.statusCode = error.status;
+      this.errorName = error.name;
+    }
+  });
+
+  const errorTemplate = this.template.nativeElement;
+    errorTemplate.style.background = " black";
+    console.log("hola",errorTemplate);
   }
   showDescription(item : ProductMeli){
     this.itemService.setTitle((item.body.title));

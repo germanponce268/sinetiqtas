@@ -25,5 +25,11 @@ export class CartService {
     return this.cartList;
   }
 
-
+  total(): number{
+    let result=0;
+    this.getCartList().forEach(item=>{
+      result = result + item.body.price
+    })
+    return result;
+  }
 }

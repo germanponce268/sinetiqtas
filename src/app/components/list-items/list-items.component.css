@@ -148,3 +148,18 @@ button {
        background-color: rgb(29, 27, 27); 
     }
 }
+
+.errorResponse{
+    color: white;
+    background-color: red;
+    height: 200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.errorResponse h3{
+    text-align: center;
+}

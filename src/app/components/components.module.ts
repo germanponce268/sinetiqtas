@@ -9,6 +9,7 @@ import { ListItemsComponent } from './list-items/list-items.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SearchedItemComponent } from './searched-item/searched-item.component';
+import { OrderSubmitComponent } from './order-submit/order-submit.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SearchedItemComponent } from './searched-item/searched-item.component';
         HeaderComponent,
         ListItemsComponent,
         FooterComponent,
-        SearchedItemComponent
+        SearchedItemComponent,
+        OrderSubmitComponent
     ],
     imports:[
         PrimeNgModule,

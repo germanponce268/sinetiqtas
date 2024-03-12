@@ -25,8 +25,8 @@
           </form>
         </div>
       </nav>
-      <p-overlayPanel #op>
-        <p-table [value]="products" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+      <p-overlayPanel #op [showCloseIcon]="true">
+        <p-table [value]="products"  [paginator]="true" [rows]="5" responsiveLayout="scroll">
           <ng-template pTemplate="header">
             <tr>
               <th>
@@ -63,6 +63,14 @@
                 <td>$ {{total()}}</td>
               </tr>
           </ng-template>
+          <ng-template pTemplate="footer">
+            <tr>
+              <th>
+                Carrito en construccion!
+              </th>
+            </tr>
+          </ng-template>
         </p-table>
+        <p-button (click)="orderSubmit()" label="Iniciar Compra"  styleClass="p-button-help"></p-button>
       </p-overlayPanel>
 </div>
