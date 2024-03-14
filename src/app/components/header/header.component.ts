@@ -33,15 +33,17 @@ export class HeaderComponent {
   }
 
   onSearch(term: any){
-    this.meliService.getProducts().subscribe((resp:ProductMeli[]) =>{
-    let found = resp.find((item) => {
-      return item.body.title.toLowerCase().includes(term.searchTerm);
-    })
-    console.log(found);
-    this.itemService.setItem2(found);
+    this.meliService.getProducts().subscribe({next:(resp:ProductMeli[])=>{
+      let found = resp.find((item)=>{
+        return item.body.title.toLowerCase().includes(term.searchTerm);
+      })
+      console.log(found);
+      this.itemService.setItem2(found);
+      this.router.navigateByUrl('searched-item');
+    }, error:(error)=>{
+      console.log(error)
+    }})
     
-    this.router.navigateByUrl('searched-item');
-    })
     this.route.url.subscribe((url)=>{
       console.log(url);
       const currentUrl = url.join('/');

@@ -22,9 +22,10 @@ export class ListItemsComponent {
   public images : string[] = [];
   public responsiveOptions! : GalleriaResponsiveOptions[];
   public visible : boolean = false;
-  public statusConn! : boolean;
+  public statusConn : boolean = true;
   public statusCode!: number;
   public errorName! : string;
+  public errorMsg! : string;
   public position : "center" | "top" | "bottom" | "left" | "right" | "topleft" | "topright" | "bottomleft" | "bottomright" = `left`;
     constructor(private meliService: MeliService, private router : Router,private itemService: ItemService, private cartService : CartService) { }
   ngOnInit(): void {   
@@ -44,6 +45,7 @@ export class ListItemsComponent {
       this.statusConn = error.ok;
       this.statusCode = error.status;
       this.errorName = error.name;
+      this.errorMsg = error.message;
     }
   });
 
