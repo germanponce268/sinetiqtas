@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { OverlayPanel } from 'primeng/overlaypanel';
 import { ProductMeli } from 'src/app/model/producto-meli';
 import { CartService } from 'src/app/services/cart.service';
@@ -22,7 +23,7 @@ export class HeaderComponent {
   private itemArray : [] = [];
   public itemOrder: Map<string, number> =  new Map<string,number>();
   
-  constructor(private meliService: MeliService, private itemService: ItemService, private router: Router, private route: ActivatedRoute, private cartService : CartService, private http : HttpClient){}
+  constructor(private meliService: MeliService, private itemService: ItemService, private router: Router, private route: ActivatedRoute, private cartService : CartService, private http : HttpClient, private messageService : MessageService){}
 
   ngOnInit(){ 
     this.logo = '/assets/images/logo-light.png'; 
@@ -41,7 +42,8 @@ export class HeaderComponent {
       this.itemService.setItem2(found);
       this.router.navigateByUrl('searched-item');
     }, error:(error)=>{
-      console.log(error)
+      console.log(error);
+      this.messageService.add({severity:"error", summary:"Servicio no disponible", detail:"Error " + error.status})
     }})
     
     this.route.url.subscribe((url)=>{
