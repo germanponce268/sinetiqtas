@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { ProductMeli } from 'src/app/model/producto-meli';
 import { ItemService } from 'src/app/services/item.service';
 import { MeliService } from 'src/app/services/meli.service';
@@ -24,7 +25,8 @@ export class HomeComponent {
     public about! : string;
     public item! :string;
     public item2! :string;
-  constructor(private router : Router, private meliService : MeliService,private itemService : ItemService){}
+    public statusOk : boolean = false;
+  constructor(private router : Router, private meliService : MeliService,private itemService : ItemService, private messageService : MessageService){}
 
     ngOnInit(){
       this.flayer = '/assets/images/matero-mantel-bordo.jpeg';
@@ -43,14 +45,18 @@ export class HomeComponent {
     }
 
     navigate(event :  any){
-      this.meliService.getProduct(event).subscribe((item : ProductMeli[]) => {  
+      this.meliService.getProduct(event).subscribe({next:(item:ProductMeli[])=>{
         console.log(item[0].body.title);
         this.itemService.setTitle(item[0].body.title);
         this.itemService.setImages(item[0].body.pictures);
         this.itemService.setImage(item[0].body.pictures[0].url);
         this.itemService.setItem(item[0]);
         this.router.navigateByUrl('item');
-      });
+      },error:(error)=>{
+        console.log(error);
+        this.statusOk = error.ok;
+        this.messageService.add({detail:"Error " + error.status ,severity:"error", summary:"Servicio No Disponible"})
+      }});
 
     }
 }

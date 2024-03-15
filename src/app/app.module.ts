@@ -8,6 +8,7 @@ import { MeliService } from './services/meli.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PrimeNgModule } from './prime-ng/prime-ng.module';
 import { FormsModule } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { FormsModule } from '@angular/forms';
     PrimeNgModule,
     FormsModule
   ],
-  providers: [MeliService],
+  providers: [MeliService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
