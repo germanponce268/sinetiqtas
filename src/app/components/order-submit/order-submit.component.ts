@@ -17,7 +17,15 @@ export class OrderSubmitComponent {
   }
 
   ordered(){
-    return this.items.length;
+    return this.cartService.getCartList().length;
+  }
+
+  orderedList(){
+    let list: string[] = [];
+    this.cartService.getCartList().forEach((item)=>{
+      list.push(item.body.title);
+    });
+    return list;
   }
 
   total(){

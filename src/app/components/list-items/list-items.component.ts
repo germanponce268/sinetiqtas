@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { GalleriaResponsiveOptions } from 'primeng/galleria';
 import { Picture, ProductMeli} from 'src/app/model/producto-meli';
 import { CartService } from 'src/app/services/cart.service';
@@ -27,7 +28,7 @@ export class ListItemsComponent {
   public errorName! : string;
   public errorMsg! : string;
   public position : "center" | "top" | "bottom" | "left" | "right" | "topleft" | "topright" | "bottomleft" | "bottomright" = `left`;
-    constructor(private meliService: MeliService, private router : Router,private itemService: ItemService, private cartService : CartService) { }
+    constructor(private meliService: MeliService, private router : Router,private itemService: ItemService, private cartService : CartService, private messageService: MessageService) { }
   ngOnInit(): void {   
 
     this.meliService.getProducts().subscribe({next: (resp)=>{
@@ -70,6 +71,7 @@ export class ListItemsComponent {
 
   addToCart(item : ProductMeli){
     this.cartService.create(item);
+    this.messageService.add({detail:"Se agrego "+ item.body.title ,severity:"success", summary:"Carrito Actualizado"})
     console.log(this.cartService.getCartList())
   }
 }
