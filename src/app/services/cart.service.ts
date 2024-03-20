@@ -11,10 +11,14 @@ export class CartService {
 
   private cartList : ProductMeli[] = [];  
 
-  constructor(private meliService:MeliService) { }
-
-  create(product : ProductMeli){
-    this.cartList.push(product);
+  create(item : ProductMeli){
+    if(!this.cartList.includes(item)){
+      item.body.amount = 1;
+      this.cartList.push(item);
+    }else{
+      item.body.amount++;
+      console.log("Ya existe el elemento" , item.body.amount);
+    }
   }
 
   delete(itemId:string):ProductMeli[]{
@@ -28,7 +32,7 @@ export class CartService {
   total(): number{
     let result=0;
     this.getCartList().forEach(item=>{
-      result = result + item.body.price
+      result = result + item.body.price * item.body.amount;
     })
     return result;
   }

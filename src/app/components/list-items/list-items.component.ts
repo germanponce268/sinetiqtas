@@ -70,6 +70,7 @@ export class ListItemsComponent {
   }
 
   addToCart(item : ProductMeli){
+    
     this.cartService.create(item);
     this.messageService.add({detail:"Se agrego "+ item.body.title ,severity:"success", summary:"Carrito Actualizado"})
     console.log(this.cartService.getCartList())

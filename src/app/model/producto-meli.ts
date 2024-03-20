@@ -3,6 +3,7 @@ export interface ProductMeli {
   }
   
   export interface Body {
+    amount:number,
     id: string
     site_id: string
     title: string

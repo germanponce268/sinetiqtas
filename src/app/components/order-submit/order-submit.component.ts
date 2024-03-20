@@ -21,9 +21,9 @@ export class OrderSubmitComponent {
   }
 
   orderedList(){
-    let list: string[] = [];
+    let list: Map<string, number> = new Map<string, number>();
     this.cartService.getCartList().forEach((item)=>{
-      list.push(item.body.title);
+      list.set(item.body.title, item.body.amount);
     });
     return list;
   }

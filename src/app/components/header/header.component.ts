@@ -19,6 +19,7 @@ export class HeaderComponent {
   public logo! : string;
   public search! : FormGroup;
   public products : ProductMeli[] = [];
+  public products2! : Set<ProductMeli>;
   public selectedProduct! : ProductMeli;
   private itemArray : [] = [];
   public itemOrder: Map<string, number> =  new Map<string,number>();

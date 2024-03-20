@@ -34,6 +34,9 @@
               </th>
               <th>Imagen</th>
               <th>
+                Cantidad
+              </th>
+              <th>
                 Precio
               </th>
             </tr>
@@ -47,10 +50,13 @@
                   <img [src]="product.body.pictures[0].url" alt="" class="w-5rem shadow-2">
                 </td>
                 <td>
+                  {{product.body.amount}}
+                </td>
+                <td>
                   $ {{product.body.price}}
                 </td>
                 <td>
-                  <i (click)="removeFromCart(product.body.id)" class="pi pi-times"></i>
+                  <i (click)="removeFromCart(product.body.id )" class="pi pi-times"></i>
                 </td>
               </tr>
           </ng-template>

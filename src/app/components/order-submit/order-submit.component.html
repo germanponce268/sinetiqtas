@@ -1,8 +1,8 @@
 
 <div class="container">
-    <h3>Carrito ({{ordered()}})items</h3>
+    <h3>Hay {{ordered()}} items en el carrito</h3>
     <div *ngIf="items.length > 0; else noItems" class="itemTitle">  
-        <div *ngFor="let order of orderedList()">
+        <div *ngFor="let order of orderedList().entries()">
             <p><i class="pi pi-check"></i> {{order}}</p>    
         </div>
     </div>
