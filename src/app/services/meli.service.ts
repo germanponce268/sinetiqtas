@@ -15,7 +15,7 @@ export class MeliService {
 
   getProduct(item: string):Observable<any>{
     const headers = new HttpHeaders({
-      'Authorization' : 'Bearer APP_USR-3842532818957091-032211-69bff705f9586f39cf2aed9b448638a2-258486877'
+      'Authorization' : 'Bearer APP_USR-3842532818957091-032220-b32bf4cc334f13358e3a6a9a1131c87b-258486877'
     });
     const url = this.apiUrl2.concat(item)
     return this.http.get<ProductMeli>(url, {headers});
@@ -23,7 +23,7 @@ export class MeliService {
 
   getProducts(): Observable<any>{
     const headers = new HttpHeaders({
-      'Authorization' : 'Bearer APP_USR-3842532818957091-032211-69bff705f9586f39cf2aed9b448638a2-258486877'
+      'Authorization' : 'Bearer APP_USR-3842532818957091-032220-b32bf4cc334f13358e3a6a9a1131c87b-258486877'
     });
     return this.http.get<ProductMeli>(this.apiUrl, {headers});
   }
