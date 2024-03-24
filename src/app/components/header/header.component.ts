@@ -8,6 +8,7 @@ import { ProductMeli } from 'src/app/model/producto-meli';
 import { CartService } from 'src/app/services/cart.service';
 import { ItemService } from 'src/app/services/item.service';
 import { MeliService } from 'src/app/services/meli.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +25,7 @@ export class HeaderComponent {
   private itemArray : [] = [];
   public itemOrder: Map<string, number> =  new Map<string,number>();
   
-  constructor(private meliService: MeliService, private itemService: ItemService, private router: Router, private route: ActivatedRoute, private cartService : CartService, private http : HttpClient, private messageService : MessageService){}
+  constructor(private tokenService : TokenService, private meliService: MeliService, private itemService: ItemService, private router: Router, private route: ActivatedRoute, private cartService : CartService, private http : HttpClient, private messageService : MessageService){}
 
   ngOnInit(){ 
     this.logo = '/assets/images/logo-light.png'; 
@@ -32,6 +33,9 @@ export class HeaderComponent {
       searchTerm : new FormControl<string>('')
     });
     this.products = this.cartService.getCartList();
+    this.tokenService.getToken().subscribe({next:(resp)=>{
+      console.log(resp);
+    },error:(error)=>console.log(error)});
   }
 
   onSearch(term: any){
